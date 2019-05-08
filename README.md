@@ -35,3 +35,19 @@ export default Vue.extend({
 ```
 
 The workaround is to [specify `string` as the return type for `profilePath`](https://github.com/tony19-sandbox/vue-typescript-issue/blob/423172b/src/components/Foo.vue#L17).
+
+### Steps to reproduce
+
+ 1. Clone this repo with `git clone https://github.com/tony19-sandbox/vue-typescript-issue.git` and CD into the directory.
+
+ 2. Run `npm run build` to build the project.
+
+ 3. Observe no errors.
+
+ 4. On [`src/components/Foo.vue#L17`](https://github.com/tony19-sandbox/vue-typescript-issue/blob/423172b/src/components/Foo.vue#L17), remove the return type from `profilePath`.
+
+ 5. Run `npm run build` to build the project.
+
+ 6. Observe the following build error on every reference to `this.open` and `this.close`:
+
+ > `Property 'XXX' does not exist on type 'CombinedVueInstance<Vue, {}, {}, {}, Readonly<Record<never, any>>>'`
